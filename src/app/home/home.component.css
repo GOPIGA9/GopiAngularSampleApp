@@ -47,6 +47,7 @@ mat-grid-tile {
   max-width: 135px;
   max-height: 300px;
   text-align: center;
+  min-height: 165px;
 }
 .CardStyle {
   margin: 3px;
