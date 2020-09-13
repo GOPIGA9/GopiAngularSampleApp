@@ -1,5 +1,5 @@
 mat-grid-tile {
-  background: #dfdfdf;
+  background: #c9c9c99c;
 }
 :host {
   display: block;
@@ -10,23 +10,64 @@ mat-grid-tile {
 .btnColor{
   background-color:#aabf98
 }
-.imgSize {
-  max-width: 100%;
-  max-height: 100%;
+
+.filterHeading{
+
+  text-align: center;
+  font-size: 18px;
+  border-bottom: 5px solid black;
+
+
+
+}
+
+.filterPadding{
+  padding-top: 45px;
+}
+
+
+.btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show > .btn-light.dropdown-toggle {
+  background-color: #356606d4;
+  color: white;
+  border-color: #d3d9df;
+}
+
+.imgCard{
+  max-height: 195px;
   padding: 12px;
   background-color: #6f7c64a3;
   transition: 0.6s linear;
   border: 2px solid #6f7c64a3;
   box-shadow: 5px 5px#181111;
+  text-align: center;
 }
-.minCardHieght {
-  min-height: 40em;
-  max-width: 30em;
+.imgSize {
+  max-height: 155px;
+  padding: 12px;
+  max-width: 135px;
+  max-height: 300px;
+  text-align: center;
+}
+.CardStyle {
   margin: 3px;
   border: 2px solid #aabf98;
   border-radius: 1px;
   box-shadow: 5px 5px#888888;
+  height: 35em;
+  text-align: center;
+  width: 25em;
+  background-color: #ffffff;
 }
+
+ .CardHieghtFilter{
+  margin: 3px;
+  border: 2px solid #aabf98;
+  border-radius: 1px;
+  box-shadow: 5px 5px#888888;
+  height: 50em;
+}
+
+
 .textHeading{
 color:#607D8B
 }
@@ -34,12 +75,8 @@ color:#607D8B
   color: #00525f;
 
 }
-.yearContainer {
-  display: grid;
-}
-.yearElemnt {
-  grid-auto-columns: auto;
-}
+
+
 
 .alignDivCenter {
   text-align: center;

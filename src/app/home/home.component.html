@@ -1,54 +1,64 @@
 <div class="row">
   <div class="col-md-3">
-    <mat-card class="minCardHieght">
+    <mat-card class=" CardHieghtFilter">
       <h1>
         <mat-card-title>Filter <button mat-raised-button style="float: right;"
             (click)="applyFilter('clear','clear')">Clear</button>
         </mat-card-title>
       </h1>
-
       <mat-card-content>
-        <label>Lunch Year</label> :
+        <div class="filterHeading"><label>Lunch Year</label> :</div>
         <mat-grid-list cols="2" rowHeight="3em">
-          <mat-grid-tile *ngFor="let year of years" class="btn btn-light btnColor" (click)="applyFilter('year',year)"> {{year}}
+          <mat-grid-tile *ngFor="let year of years" class="btn btn-light btnColor"
+            [ngClass]="{'active': this.filterObj.year === year}" (click)="applyFilter('year',year)"> {{year}}
           </mat-grid-tile>
         </mat-grid-list>
       </mat-card-content>
       <span></span>
-      <mat-card-footer style="padding-top: 45px;">
-        <label>Succesfull Lunch</label> :
+      <mat-card-footer class="filterPadding">
+        <div class="filterHeading"><label>Succesfull Lunch</label> :</div>
         <mat-grid-list cols="2" rowHeight="3em">
-          <mat-grid-tile class="btn btn-light btnColor" (click)="applyFilter('lunch',true)">True</mat-grid-tile>
-          <mat-grid-tile class="btn btn-light btnColor" (click)="applyFilter('lunch',false)">false</mat-grid-tile>
+          <mat-grid-tile class="btn btn-light btnColor" [ngClass]="{'active': this.filterObj.launch === 'true'}"
+            (click)="applyFilter('lunch',true)">True</mat-grid-tile>
+          <mat-grid-tile class="btn btn-light btnColor" [ngClass]="{'active': this.filterObj.launch === 'false'}"
+            (click)="applyFilter('lunch',false)">false</mat-grid-tile>
         </mat-grid-list>
       </mat-card-footer>
-      <mat-card-footer style="padding-top: 45px;">
-        <label>Succesfull Landing</label> :
+      <mat-card-footer class="filterPadding">
+        <div class="filterHeading"> <label>Succesfull Landing</label> :</div>
         <mat-grid-list cols="2" rowHeight="3em">
-          <mat-grid-tile class="btn btn-light btnColor" (click)="applyFilter('land',true)">True</mat-grid-tile>
-          <mat-grid-tile class="btn btn-light btnColor" (click)="applyFilter('land',false)">false</mat-grid-tile>
+          <mat-grid-tile class="btn btn-light btnColor" [ngClass]="{'active': this.filterObj.land === 'true'}"
+            (click)="applyFilter('land',true)">True</mat-grid-tile>
+          <mat-grid-tile class="btn btn-light btnColor" [ngClass]="{'active': this.filterObj.land === 'false'}"
+            (click)="applyFilter('land',false)">false</mat-grid-tile>
         </mat-grid-list>
       </mat-card-footer>
     </mat-card>
   </div>
   <div class="col-md-9">
-    <mat-grid-list [cols]="breakpoint" rowHeight="40em" (window:resize)="setBreakPoint($event.target.innerWidth)">
+    <mat-grid-list [cols]="breakpoint" rowHeight="35em" (window:resize)="setBreakPoint($event.target.innerWidth)">
       <mat-grid-tile *ngFor="let XTuser of XTdatas">
-        <mat-card class="minCardHieght">
-          <mat-card-content><img class="imgSize" [alt]="XTuser.mission_name" [src]="XTuser.links.mission_patch_small"></mat-card-content>
-          <mat-card-subtitle ><h2 class="textHeading"> {{XTuser.mission_name}} # {{XTuser.flight_number}}</h2></mat-card-subtitle>
-          <mat-card-content>
-            <mat-list>
-             <h3 class="textBlack"> <label>Mission Ids</label> :</h3>
-              <mat-list-item *ngFor="let missionIds of XTuser.mission_id" color="ascent">
-                {{missionIds}}
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-          <label class="textBlack">Lunch Year</label> : <span>{{XTuser.launch_year}}</span>
-        <label class="textBlack">Succesfull Lunch</label> : <span>{{XTuser.launch_success}}</span>
-        <label class="textBlack">Succesfull Landing</label> : <span>{{XTuser.rocket.first_stage.cores[0].land_success}}</span>
-        </mat-card>
+
+        <div class="CardStyle">
+          <div class="imgCard"><img class="imgSize" [alt]="XTuser.mission_name"
+              [src]="XTuser.links.mission_patch_small"></div>
+          <div>
+            <h2 class="textHeading"> {{XTuser.mission_name}} # {{XTuser.flight_number}}</h2>
+          </div>
+          <div>
+            <div>
+              <h3 class="textBlack"> <label>Mission Ids</label> :</h3>
+            </div>
+            <li *ngFor="let missionIds of XTuser.mission_id" color="ascent">
+              {{missionIds}}
+            </li>
+          </div>
+          <div>
+            <label class="textBlack">Lunch Year</label> : <span>{{XTuser.launch_year}}</span></div>
+          <div><label class="textBlack">Succesfull Lunch</label> : <span>{{XTuser.launch_success}}</span></div>
+          <div><label class="textBlack">Succesfull Landing</label> :
+            <span>{{XTuser.rocket.first_stage.cores[0].land_success}}</span></div>
+        </div>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

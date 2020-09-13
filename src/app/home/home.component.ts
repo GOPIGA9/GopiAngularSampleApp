@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from './../api-calls.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,6 +14,7 @@ export class HomeComponent implements OnInit {
     launch: '',
     land:''
   };
+
   constructor(
     public XTservice: ApiCallsService
   ) {}
