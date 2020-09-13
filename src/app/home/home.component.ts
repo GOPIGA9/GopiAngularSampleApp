@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from './../api-calls.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,9 +13,10 @@ export class HomeComponent implements OnInit {
   filterObj = {
     year: '',
     launch: '',
+    land:''
   };
   constructor(
-    public XTservice: ApiCallsService,
+    public XTservice: ApiCallsService
   ) {}
 
   ngOnInit(): void {
@@ -25,13 +27,21 @@ export class HomeComponent implements OnInit {
     this.XTservice.spinnerRemove();
   }
   applyFilter(filterType, data) {
+    debugger
     this.XTservice.spinnerAdd();
     if (filterType === 'year') {
       this.filterObj.year = data;
     } else if (filterType === 'clear') {
       this.filterObj.year = '';
       this.filterObj.launch = '';
-    } else {
+      this.filterObj.land = '';
+    } else if (filterType === 'land'){
+      if (data === true) {
+        this.filterObj.land = 'true';
+      } else {
+        this.filterObj.land = 'false';
+      }
+    }else{
       if (data === true) {
         this.filterObj.launch = 'true';
       } else {
@@ -44,7 +54,7 @@ export class HomeComponent implements OnInit {
     this.XTservice.spinnerRemove();
   }
   makeArray() {
-    for (var i = 2006; i <= 2019; i++) {
+    for (var i = 2006; i <= 2020; i++) {
       this.years.push(i);
     }
   }

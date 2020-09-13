@@ -19,7 +19,7 @@ export class ApiCallsService {
 
   getXtListsFilter(filterObj) {
     return this.http.get(
-      `https://api.spaceXdata.com/v3/launches?limit=100&launch_success=${filterObj.launch}&launch_year=${filterObj.year}`
+      `https://api.spaceXdata.com/v3/launches?limit=100&launch_success=${filterObj.launch}&land_success=${filterObj.land}&launch_year=${filterObj.year}`
     );
   }
 
